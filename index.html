@@ -2,6 +2,7 @@
 
     <head>
         <meta charset="UTF-8">
+        <title>CharCounter</title>
         
         <style>
             
@@ -15,14 +16,28 @@
             }
             
             body {
+        
+            }
+            
+            #backgroundClicker {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                z-index: -1;
                 background-image: url(http://loremflickr.com/g/1280/1280/paris);
                 background-size: cover;
                 background-position: center center;
+                cursor: pointer;                
+                
             }
             
             .container {
                 display: block;
                 position: relative;
+                z-index: 10;
                 margin: 0 auto;
                 padding: 0;
                 width: 100%;
@@ -47,6 +62,7 @@
                 outline: 0;
                 border: 0;
                 border-radius: 0.2em;
+                cursor: default;
             }
             textarea:focus { outline: 0; border: 0; }
             
@@ -60,6 +76,7 @@
                 min-width: 2em;
                 text-align: center;
                 border-radius: 0 0 0.2em 0.2em;
+                cursor: default;
             }
             
         </style>
@@ -71,11 +88,14 @@
         
         <div class="container">
             
+            <div id="backgroundClicker"></div>
+
             <p id="counter">0</p>
             
             <form>
                 <textarea id="pad" autofocus="autofocus"></textarea>
             </form>
+            
             
         </div>
     
@@ -105,6 +125,12 @@ return(!i||i!==r&&!b.contains(r,i))&&(e.type=o.origType,n=o.handler.apply(this,a
         $("#pad").keyup(function(){
           $("#counter").text($(this).val().length);
         });
+        
+        $('#backgroundClicker').click(function() {
+            $(this).css('background-image', 'none');
+            $(this).css('background-image', 'url(http://loremflickr.com/g/1280/1280/paris)');
+        });
+        
     });
 </script>
         
